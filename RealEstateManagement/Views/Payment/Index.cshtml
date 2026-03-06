@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Payment>
+
+<h2>Rent Payments</h2>
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>Tenant</th>
+            <th>Amount</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.Tenant.FullName</td>
+                <td>₦@p.Amount</td>
+                <td>@p.PaymentDate</td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>

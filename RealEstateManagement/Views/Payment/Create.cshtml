@@ -1,0 +1,27 @@
+﻿@model IEnumerable<RealEstateManagement.Models.Payment>
+
+@{
+    ViewData["Title"] = "Payment History";
+}
+
+<h2>Financial History</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Tenant ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Amount.ToString("C")</td>
+                <td>@item.PaymentDate.ToShortDateString()</td>
+                <td>@item.TenantId</td>
+            </tr>
+        }
+    </tbody>
+</table>

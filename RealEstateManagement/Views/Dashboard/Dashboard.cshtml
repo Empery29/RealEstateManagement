@@ -1,0 +1,111 @@
+﻿<h2>Real Estate Dashboard</h2>
+
+<div class="row">
+
+    @* <div class="col-md-3">
+        <div class="card bg-primary text-white p-3">
+            <h4>Total Properties</h4>
+            <h2>@ViewBag.Properties</h2>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card bg-success text-white p-3">
+            <h4>Total Tenants</h4>
+            <h2>@ViewBag.Tenants</h2>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card bg-success text-white p-3">
+            <h4>Total Agents</h4>
+            <h2>@ViewBag.Agents</h2>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card bg-warning text-white p-3">
+            <h4>Total Rent</h4>
+            <h2>₦@ViewBag.Payments</h2>
+        </div>
+    </div> *@
+
+
+    @{
+        ViewData["Title"] = "Management Dashboard";
+    }
+
+    <div class="container-fluid mt-4">
+        <div class="row mb-4">
+            <div class="col">
+                <h1 class="display-5">Real Estate Overview</h1>
+                <p class="text-muted">Quickly manage your properties, tenants, and financial records.</p>
+            </div>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+
+            <div class="col">
+                <div class="card h-100 border-primary shadow-sm">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-primary">Properties</h5>
+                        <p class="card-text">Manage listings and availability.</p>
+                        <a asp-controller="Property" asp-action="Index" class="btn btn-outline-primary w-100 mb-2">View All</a>
+                        <a asp-controller="Property" asp-action="Create" class="btn btn-primary w-100">Add New Property</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100 border-success shadow-sm">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-success">Tenants</h5>
+                        <p class="card-text">Track leases and contact info.</p>
+                        <a asp-controller="Tenant" asp-action="Index" class="btn btn-outline-success w-100 mb-2">View Tenants</a>
+                        <a asp-controller="Tenant" asp-action="Create" class="btn btn-success w-100">Register Tenant</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100 border-warning shadow-sm">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-warning text-dark">Maintenance</h5>
+                        <p class="card-text">Check open repair requests.</p>
+                        <a asp-controller="Maintenance" asp-action="Index" class="btn btn-outline-warning w-100 mb-2 text-dark">View Requests</a>
+                        <a asp-controller="Maintenance" asp-action="Create" class="btn btn-warning w-100 text-dark">New Ticket</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100 border-info shadow-sm">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-info">Payments</h5>
+                        <p class="card-text">Review rent and expenses.</p>
+                        <a asp-controller="Payment" asp-action="Index" class="btn btn-outline-info w-100">Financial History</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100 border-secondary shadow-sm">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-secondary">Agents</h5>
+                        <p class="card-text">Manage realtor assignments.</p>
+                        <a asp-controller="Agent" asp-action="Index" class="btn btn-outline-secondary w-100">Staff List</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card bg-danger text-white p-3">
+            <h4>Maintenance Requests</h4>
+            <h2>@ViewBag.Maintenance</h2>
+        </div>
+    </div>
+
+</div>

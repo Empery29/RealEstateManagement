@@ -1,0 +1,63 @@
+﻿@* @model IEnumerable<Agent>
+
+<h2>Agents</h2>
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var a in Model)
+        {
+            <tr>
+                <td>@a.Name</td>
+                <td>@a.Phone</td>
+                <td>@a.Email</td>
+            </tr>
+        }
+
+    </tbody>
+
+</table> *@
+
+
+
+
+@model IEnumerable<RealEstateManagement.Models.Agent>
+
+@{
+    ViewData["Title"] = "Staff List";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>Our Agents</h1>
+    <a asp-action="Create" class="btn btn-primary">Add New Agent</a>
+</div>
+
+<table class="table table-hover border">
+    <thead class="table-light">
+        <tr>
+            <th>Agent Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>
+                    <a class="btn btn-sm btn-info">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Property>
+
+<h2>Properties</h2>
+
+<a asp-action="Create" class="btn btn-primary">Add Property</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Bedrooms</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    @foreach (var p in Model)
+    {
+        <tr>
+            <td>@p.Title</td>
+            <td>₦@p.price</td>
+            <td>@p.Bedrooms</td>
+
+            <td>
+                <a asp-action="Details" asp-route-id="@p.Id">View</a>
+                <a asp-action="Delete" asp-route-id="@p.Id">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

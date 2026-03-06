@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Tenant>
+
+<h2>Tenants</h2>
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Property</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var t in Model)
+        {
+            <tr>
+                <td>@t.FullName</td>
+                <td>@t.Phone</td>
+                <td>@t.Property.Title</td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>

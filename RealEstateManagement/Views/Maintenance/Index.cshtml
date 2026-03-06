@@ -1,0 +1,28 @@
+﻿@model IEnumerable<MaintenanceRequest>
+
+<h2>Maintenance Requests</h2>
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>Property</th>
+            <th>Issue</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var m in Model)
+        {
+            <tr>
+                <td>@m.Property.Title</td>
+                <td>@m.Issue</td>
+                <td>@m.Status</td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
