@@ -1,0 +1,53 @@
+﻿@model RealEstateManagement.Models.Property
+
+@{
+    ViewData["Title"] = "Property Details";
+}
+
+<h1>Property Details</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Address
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Address
+        </dd>
+    </dl>
+</div>
+
+<h4>Current Tenants</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>FullName</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Tenants != null && Model.Tenants.Any())
+        {
+            foreach (var tenant in Model.Tenants)
+            {
+                <tr>
+                    <td>@tenant.FullName</td>
+                    <td>@tenant.Email</td>
+                    <td>@tenant.Phone</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="2" class="text-muted">No tenants assigned to this property.</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

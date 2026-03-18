@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RealEstateManagement.Models;
+using RealEstateManagement.Models.DTO;
 
 namespace RealEstateManagement.Controllers
 {
@@ -24,10 +25,23 @@ namespace RealEstateManagement.Controllers
             return View();
         }
 
+       
+
         [HttpPost]
         public async Task<IActionResult> Create(Tenant model)
         {
-            _context.Tenants.Add(model);
+            var user = new User()
+            {
+                FullName = model.FullName,
+                Gender = model.Gender,
+                Phone = model.Phone,
+                Email = model.Email,
+                HashPassword = "Tenant123",
+                Role = "Tenant"
+            };
+            await _context.Users.AddAsync(user);
+            model.ExpiryDate = model.MoveInDate.AddYears(model.NumberOfYear);
+            await _context.Tenants.AddAsync(model);
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");

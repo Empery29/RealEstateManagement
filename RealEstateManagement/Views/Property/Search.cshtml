@@ -1,0 +1,181 @@
+﻿@using RealEstateManagement.Models.DTO
+@model PropertyCategoryResponseModel
+
+<section class="property-hero d-flex align-items-center justify-content-center text-white text-center">
+    <div class="container">
+        <h1 class="display-4 fw-bold mb-4">Explore Average Property Prices in Nigeria</h1>
+        
+        <div class="search-card p-4 shadow-sm bg-white-transparent rounded">
+            <form asp-controller="Property" asp-action="AvailableProperties" method="post">
+                <div class="row g-3">
+                    <div class="col-12">
+                        <input type="text" name="Address" class="form-control form-control-lg border-0" 
+                               placeholder="Enter a state or locality">
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="text-dark d-block text-start small fw-bold">Category</label>
+                        <select name="IsForSale" class="form-select border-0 bg-light">
+                            <option value="">Select Category</option>
+                            <option value="True">For Sale</option>
+                            <option value="False">For Rent</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="text-dark d-block text-start small fw-bold">Type</label>
+                        <select name="IsFlat" class="form-select border-0 bg-light">
+                            <option value="">Select Type</option>
+                            <option value="True">Flat</option>
+                            <option value="False">House</option>
+@*                             <option value="3">Land</option> *@
+                        </select>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="text-dark d-block text-start small fw-bold">Bedrooms</label>
+                        <select name="Bedrooms" class="form-select border-0 bg-light">
+                            <option value="">All</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-3 d-flex align-items-end">
+                        <button type="submit" class="btn btn-danger btn-lg w-100 py-2 fw-bold shadow-sm">
+                            Find
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<div class="container mt-5">
+    <h3 class="mb-4">House For Sale</h3>
+    <table class="table table-hover align-middle">
+        <thead class="table-light">
+            <tr>
+                @* <th>Rank</th> *@
+                <th>Title</th>
+                <th>Address</th>
+                <th>Average Price</th>
+             @*    <th>Rank</th> *@
+                <th>Availability</th>
+            </tr>
+        </thead>
+        <tbody>
+            @* Example Static Row *@
+            @foreach(var i in Model.HouseForSale)
+            {
+                <tr>
+                  @*   <td>@i + 1</td> *@
+                    <td>@i.Title</td>
+                    <td>@i.Address</td>
+                    <td>₦ @i.price</td>
+                @*     <td>1</td> *@
+                    <td>@(i.IsAvailable ? "Yes": "No")</td>
+                </tr>
+            }
+            
+        </tbody>
+    </table>
+</div>
+
+<div class="container mt-5">
+    <h3 class="mb-4">House For Rent</h3>
+    <table class="table table-hover align-middle">
+        <thead class="table-light">
+            <tr>
+                @* <th>Rank</th> *@
+                <th>Title</th>
+                <th>Address</th>
+                <th>Average Price</th>
+                @*    <th>Rank</th> *@
+                <th>Availability</th>
+            </tr>
+        </thead>
+        <tbody>
+            @* Example Static Row *@
+            @foreach (var i in Model.HouseForRent)
+            {
+                <tr>
+                    @*   <td>@i + 1</td> *@
+                    <td>@i.Title</td>
+                    <td>@i.Address</td>
+                    <td>₦ @i.price</td>
+                    @*     <td>1</td> *@
+                    <td>@(i.IsAvailable ? "Yes" : "No")</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+<div class="container mt-5">
+    <h3 class="mb-4">Flat For Sale</h3>
+    <table class="table table-hover align-middle">
+        <thead class="table-light">
+            <tr>
+                @* <th>Rank</th> *@
+                <th>Title</th>
+                <th>Address</th>
+                <th>Average Price</th>
+                @*    <th>Rank</th> *@
+                <th>Availability</th>
+            </tr>
+        </thead>
+        <tbody>
+            @* Example Static Row *@
+            @foreach (var i in Model.FlatForSale)
+            {
+                <tr>
+                    @*   <td>@i + 1</td> *@
+                    <td>@i.Title</td>
+                    <td>@i.Address</td>
+                    <td>₦ @i.price</td>
+                    @*     <td>1</td> *@
+                    <td>@(i.IsAvailable ? "Yes" : "No")</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
+<div class="container mt-5">
+    <h3 class="mb-4">Flat For Rent</h3>
+    <table class="table table-hover align-middle">
+        <thead class="table-light">
+            <tr>
+                @* <th>Rank</th> *@
+                <th>Title</th>
+                <th>Address</th>
+                <th>Average Price</th>
+                @*    <th>Rank</th> *@
+                <th>Availability</th>
+            </tr>
+        </thead>
+        <tbody>
+            @* Example Static Row *@
+            @foreach (var i in Model.FlatForRent)
+            {
+                <tr>
+                    @*   <td>@i + 1</td> *@
+                    <td>@i.Title</td>
+                    <td>@i.Address</td>
+                    <td>₦ @i.price</td>
+                    @*     <td>1</td> *@
+                    <td>@(i.IsAvailable ? "Yes" : "No")</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
+

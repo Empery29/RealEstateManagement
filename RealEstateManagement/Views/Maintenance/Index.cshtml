@@ -6,9 +6,13 @@
 
     <thead>
         <tr>
-            <th>Property</th>
+            <th>Title</th>
             <th>Issue</th>
+            <th>Name</th>
+            <th>Email</th>
+             <th>Property Identity</th>
             <th>Status</th>
+            <th>Action</th>
         </tr>
     </thead>
 
@@ -17,9 +21,21 @@
         @foreach (var m in Model)
         {
             <tr>
-                <td>@m.Property.Title</td>
+                <td>@m.PropertyTitle</td>
                 <td>@m.Issue</td>
+                <td>@m.TenantName</td>
+                <td>@m.TenantEmail</td>
+                <td>@m.PropertyId</td>
                 <td>@m.Status</td>
+                <td>
+                    @if (m.Status != "Resolved")
+                    {
+                        <a class="btn btn-primary" asp-controller="Maintenance" asp-action="Acknowledgement" asp-route-id="@m.Id">Acknowledged</a>
+                    }
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-controller="Maintenance" asp-action="Resolved" asp-route-id="@m.Id">Resolved</a>
+                </td>
             </tr>
         }
 

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RealEstateManagement.Models;
+using RealEstateManagement.Models.DTO;
 
 namespace RealEstateManagement.Controllers
 {
@@ -25,9 +26,24 @@ namespace RealEstateManagement.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Agent model)
+        public async Task<IActionResult> Create(AgentRequestModel model)
         {
-            _context.Agents.Add(model);
+            var user = new User()
+            {
+                FullName = model.Name,
+                Phone = model.Phone,
+                Email = model.Email,
+                Gender = model.Gender,
+                HashPassword = "Agent123",
+                Role = "Agent"
+            };
+            await _context.Users.AddAsync(user);
+            await  _context.Agents.AddAsync(new Agent
+            {
+                Name = model.Name,
+                Phone = model.Phone,
+                Email = model.Email
+            });
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");

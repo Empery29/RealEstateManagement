@@ -1,4 +1,5 @@
-﻿<h2>Real Estate Dashboard</h2>
+﻿@using System.Security.Claims
+<h2>Real Estate Dashboard</h2>
 
 <div class="row">
 
@@ -57,6 +58,17 @@
             </div>
 
             <div class="col">
+                <div class="card h-100 border-primary shadow-sm">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-primary">Lands</h5>
+                        <p class="card-text">Manage listings and availability.</p>
+                        <a asp-controller="Land" asp-action="Index" class="btn btn-outline-primary w-100 mb-2">View All</a>
+                        <a asp-controller="Land" asp-action="Create" class="btn btn-primary w-100">Add New Land</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
                 <div class="card h-100 border-success shadow-sm">
                     <div class="card-body text-center">
                         <h5 class="card-title text-success">Tenants</h5>
@@ -77,6 +89,8 @@
                     </div>
                 </div>
             </div>
+            @if (User.FindFirst(ClaimTypes.Role)!.Value == "Admin")
+            {
 
             <div class="col">
                 <div class="card h-100 border-info shadow-sm">
@@ -94,9 +108,11 @@
                         <h5 class="card-title text-secondary">Agents</h5>
                         <p class="card-text">Manage realtor assignments.</p>
                         <a asp-controller="Agent" asp-action="Index" class="btn btn-outline-secondary w-100">Staff List</a>
+                        <a asp-controller="Agent" asp-action="Create" class="btn btn-success w-100">Register Tenant</a>
                     </div>
                 </div>
             </div>
+            }
 
         </div>
     </div>

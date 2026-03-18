@@ -20,3 +20,36 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/* Hero styling with background image */
+.property-hero {
+    min-height: 500px;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/nigeria-architecture.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+}
+
+/* Semi-transparent background for the search box */
+.bg-white-transparent {
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Label styling to match the white labels on dark backgrounds */
+.search-card label {
+    color: #ffffff !important;
+    margin-bottom: 5px;
+}
+
+/* Custom inputs to match the screenshot's clean look */
+.search-card .form-control, .search-card .form-select {
+    border-radius: 4px;
+    height: 48px;
+}
+
+/* Find button color */
+.btn-danger {
+    background-color: #e74c3c;
+    border: none;
+}

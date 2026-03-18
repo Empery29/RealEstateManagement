@@ -6,9 +6,12 @@
         public string FullName { get; set; } = string.Empty;
         public string Phone { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
+        public string Gender { get; set; }
         public int PropertyId { get; set; }
         public Property? Property { get; set; }
         public DateTime MoveInDate { get; set; }
+        public int NumberOfYear { get; set;  }
+        public DateTime? ExpiryDate { get; set; }
 
         public List<Payment> Payments { get; set; } = [];
     }

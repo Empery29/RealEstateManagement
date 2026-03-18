@@ -8,6 +8,9 @@
         <tr>
             <th>Name</th>
             <th>Phone</th>
+            <th>Email</th>
+            <th>Move In Date</th>
+            <th>Rent Expiry Date</th>
             <th>Property</th>
         </tr>
     </thead>
@@ -19,6 +22,9 @@
             <tr>
                 <td>@t.FullName</td>
                 <td>@t.Phone</td>
+                <td>@t.Email</td>
+                <td>@t.MoveInDate.ToShortDateString()</td>
+                <td>@(t.ExpiryDate != null ? t.ExpiryDate!.Value.ToShortDateString() : "")</td>
                 <td>@t.Property.Title</td>
             </tr>
         }

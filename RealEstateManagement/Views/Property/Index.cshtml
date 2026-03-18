@@ -7,6 +7,7 @@
 <table class="table">
     <thead>
         <tr>
+            <th>Id</th>
             <th>Title</th>
             <th>Price</th>
             <th>Bedrooms</th>
@@ -18,6 +19,7 @@
     @foreach (var p in Model)
     {
         <tr>
+            <td>@p.Id</td>
             <td>@p.Title</td>
             <td>₦@p.price</td>
             <td>@p.Bedrooms</td>
